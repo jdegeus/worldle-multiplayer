@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background-color: #EDF1D6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#layout {
+  height: 100vh;
+  height: 100dvh;
+  overflow: auto;
+}
+
+.SPOT span {
+    background-color: white;
+}
+
+.CORRECT_SPOT span {
+    background-color: #02cd75;
+    color: white;
+}
+
+.WRONG_SPOT span {
+    background-color: #FFE569;
+}
+
+.NO_SPOT span,
+.WRONG_SPOT_EXTRA span {
+    background-color: rgb(174, 174, 174);
+}
