@@ -1,45 +1,25 @@
 "use client";
 
 import styles from './styles.module.css';
-
-import { useEffect, useState } from "react";
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { usePathname } from 'next/navigation';
+import { signOut, useSession } from "next-auth/react";
+import Link from 'next/link';
 
 const Nav = () => {
   const { data: session } = useSession();
-
-  const [providers, setProviders] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      const res = await getProviders();
-      setProviders(res);
-    })();
-  }, []);
+  const pathname = usePathname();
+  console.log(pathname);
 
   return (
     <nav id={styles.nav}>
       {session?.user ? (
         <div>
           <button type='button' onClick={signOut}>
-            Sign Out
+            Log out
           </button>
         </div>
-      ) : (
-        <>
-          {providers &&
-            Object.values(providers).map((provider) => (
-              <button
-                type='button'
-                key={provider.name}
-                onClick={() => {
-                  signIn(provider.id);
-                }}>
-                Sign in
-              </button>
-            ))}
-        </>
-      )}
+      ) : (pathname !== "/login" ?
+        <Link href="/login">Log in</Link> : null)}
     </nav>
   );
 };

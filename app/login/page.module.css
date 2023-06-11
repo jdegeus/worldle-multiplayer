@@ -1,0 +1,41 @@
+#page {
+  display: flex;
+  justify-content: center;
+}
+
+.inner_page {
+  background-color: white;
+  padding: 20px;
+  min-width: 320px;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.label {
+  display: block;
+  padding-bottom: 7px;
+}
+
+.input {
+  display: block;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 7px;
+}
+
+.submit {
+  height: 40px;
+  background-color: black;
+  color: white;
+  font-weight: 700;
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  margin: 10px 0;
+}

@@ -26,7 +26,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning={true}>
         <Provider>
           <main id='layout' className={ubuntu.className} data-cy="layout">
             <Nav />
