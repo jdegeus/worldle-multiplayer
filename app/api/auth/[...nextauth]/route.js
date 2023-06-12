@@ -64,10 +64,16 @@ const handler = NextAuth({
 
         // if not, create a new document and save user in MongoDB
         if (!userExists) {
+
+          let image = profile.picture;
+          if(account?.provider === 'facebook'){
+            image = image?.data?.url;
+          }
+
           await User.create({
             email: profile.email,
-            username: profile.name.replace(" ", "").toLowerCase(),
-            image: profile.picture,
+            username: profile.name.replaceAll(" ", "").toLowerCase(),
+            image,
           });
         }
 
