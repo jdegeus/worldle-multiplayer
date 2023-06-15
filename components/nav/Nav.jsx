@@ -1,27 +1,25 @@
 "use client";
 
 import styles from './styles.module.css';
-import { usePathname } from 'next/navigation';
-import { signOut, useSession } from "next-auth/react";
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { signIn, signOut, useSession } from "next-auth/react";
 import Image from 'next/image';
+import DefaultButton from '../buttons/defaultButton';
 
 const Nav = () => {
   const { data: session } = useSession();
-  const pathname = usePathname();
 
   return (
     <nav id={styles.nav}>
       {session?.user ? (
         <div>
-          <button type='button' onClick={signOut}>
-            Log out
-          </button>
+          <DefaultButton trigger={signOut}>Log out</DefaultButton>
           <Image src={session.user.image} alt={session.user.name} width={100} height={100}/>
         </div>
-      ) : (pathname !== "/login" ?
-        <Link href="/login">Log in</Link> : null)}
+      ) : <>
+          {/* <Link href="/auth/signin">Log in</Link> */}
+          <DefaultButton trigger={signIn}>Log In</DefaultButton>
+        </>}
+
     </nav>
   );
 };
